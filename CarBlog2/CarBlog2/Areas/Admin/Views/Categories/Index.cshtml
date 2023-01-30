@@ -1,0 +1,85 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<CarBlog2.Models.Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Table.cshtml";
+}
+
+<h1>Danh Sách Thể Loại </h1>
+
+<p>
+    <a asp-action="Create">Tạo Mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Ten Danh Muc
+            </th>
+             <th>
+              Alias
+            </th>
+            <th>
+               MetaDesc
+            </th>
+            <th>
+               MetaKey
+            </th>
+            <th>
+              Thumb
+            </th>
+            <th>
+               Trang Thai
+            </th>
+             <th>
+               Mo Ta
+            </th>
+              <th></th>
+         
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CastId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaKey)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thumb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Published)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CastId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CastId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CastId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+   </table>
+<div class="box" aria-label="Page navigation example">
+    <ul class="pagination">
+       <pager class="pager-container" list="@Model" options="@PagedListRenderOptions.Bootstrap4Full" asp-action="Index" asp-controller="Categories" asp-route-query="@Model" />
+
+    </ul>
+</div>

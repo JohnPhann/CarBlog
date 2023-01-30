@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>E:\Repos\CarBlog2\CarBlog2\bin\Release\net5.0\publish\dung7</_PublishTargetUrl>
+    <History>True|2022-04-19T08:16:34.1859628Z;True|2022-04-18T09:18:03.8321174+07:00;True|2022-04-17T22:25:24.0960319+07:00;False|2022-04-17T22:19:12.9088012+07:00;True|2022-04-17T12:24:41.0940193+07:00;True|2022-04-17T11:12:08.8063670+07:00;True|2022-04-17T10:03:09.7886287+07:00;True|2022-04-17T09:50:35.1657046+07:00;True|2022-04-17T09:38:35.4417816+07:00;</History>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+</Project>

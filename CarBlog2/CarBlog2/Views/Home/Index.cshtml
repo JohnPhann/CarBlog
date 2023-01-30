@@ -1,0 +1,207 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<!-- hero section -->
+	<section id="hero">
+
+		<div class="container-xl">
+
+			<div class="row gy-4">
+				@if(Model.Feature != null)
+				{
+					string url = $"/{@Model.Feature.Alias}.html";
+				<div class="col-lg-8">
+					
+					<!-- featured post large -->
+					<div class="post featured-post-lg">
+						<div class="details clearfix">
+							<a href="category.html" class="category-badge">@Model.Feature.Cast.CastName</a>
+							<h2 class="post-title"><a href="@url">@Model.Feature.Tite</a></h2>
+							<ul class="meta list-inline mb-0">
+								<li class="list-inline-item"><a href="#">@Model.Feature.Author</a></li>
+								<li class="list-inline-item">@Model.Feature.CreateDate</li>
+							</ul>
+						</div>
+						<a href="blog-single.html">
+							<div class="thumb rounded">
+								<div class="inner data-bg-image" data-bg-image="images/posts/@Model.Feature.Thumb"></div>
+							</div>
+						</a>
+					</div>
+
+				</div>
+				}
+				<div class="col-lg-4">
+
+					<!-- post tabs -->
+					<div class="post-tabs rounded bordered">
+						<!-- tab navs -->
+						<ul class="nav nav-tabs nav-pills nav-fill" id="postsTab" role="tablist">
+							<li class="nav-item" role="presentation"><button aria-controls="popular" aria-selected="true" class="nav-link active" data-bs-target="#popular" data-bs-toggle="tab" id="popular-tab" role="tab" type="button">Popular</button></li>
+							<li class="nav-item" role="presentation"><button aria-controls="recent" aria-selected="false" class="nav-link" data-bs-target="#recent" data-bs-toggle="tab" id="recent-tab" role="tab" type="button">Recent</button></li>
+						</ul>
+						<!-- tab contents -->
+						<div class="tab-content" id="postsTabContent">
+							<!-- loader -->
+							<div class="lds-dual-ring"></div>
+							@if(Model.Populars != null)
+							{
+							foreach (var item in Model.Populars)
+							{
+								string url = $"/{item.Alias}.html";
+								<!-- popular posts -->
+								<div aria-labelledby="popular-tab" class="tab-pane fade show active" id="popular" role="tabpanel">
+									<!-- post -->
+								<div class="post post-list-sm circle">
+										<div class="thumb circle">
+											<a href="@item.Alias">
+												<div class="inner">
+													<img src="images/posts/@item.Thumb" alt="post-title" />
+												</div>
+											</a>
+										</div>
+										<div class="details clearfix">
+											<h6 class="post-title my-0"><a href="@url">@item.Tite</a></h6>
+											<ul class="meta list-inline mt-1 mb-0">
+												<li class="list-inline-item">@item.CreateDate</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							}
+						}
+							<!-- recent posts -->
+							<div aria-labelledby="recent-tab" class="tab-pane fade" id="recent" role="tabpanel">
+								@if(@Model.Recents != null)
+									
+								{
+
+									foreach(var item in Model.Recents)
+									{
+										string url = $"/{item.Alias}.html";
+								<!-- post -->
+								<div class="post post-list-sm circle">
+									<div class="thumb circle">
+										<a href="@item.Alias">
+											<div class="inner">
+												<img src="images/posts/@item.Thumb" alt="post-title" />
+											</div>
+										</a>
+									</div>
+									<div class="details clearfix">
+										<h6 class="post-title my-0"><a href="@url">@item.Tite</a></h6>
+										<ul class="meta list-inline mt-1 mb-0">
+											<li class="list-inline-item">@item.CreateDate</li>
+										</ul>
+									</div>
+								</div>
+									}
+								}
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+
+	<!-- section main content -->
+	<section class="main-content">
+		<div class="container-xl">
+
+			<div class="row gy-4">
+
+				<div class="col-lg-8">
+
+				
+
+					<div class="spacer" data-height="50"></div>
+
+					<!-- horizontal ads -->
+					<div class="ads-horizontal text-md-center">
+						<span class="ads-title">- Sponsored Ad -</span>
+						<a href="#">
+							<img src="images/ads/ad-750.png" alt="Advertisement" />
+						</a>
+					</div>
+
+					<div class="spacer" data-height="50"></div>
+
+					<!-- section header -->
+
+					<div class="spacer" data-height="50"></div>
+
+					<!-- section header -->
+					<div class="section-header">
+						<h3 class="section-title">Latest Posts</h3>
+						<img src="images/wave.svg" class="wave" alt="wave" />
+					</div>
+
+					<div class="padding-30 rounded bordered">
+
+						<div class="row">
+						@if(Model.Populars != null)
+						{
+
+							foreach(var item in Model.Populars)
+							{
+								string url = $"/{item.Alias}.html";
+							<div class="col-md-12 col-sm-6">
+								<!-- post -->
+								<div class="post post-list clearfix">
+									<div class="thumb rounded">
+										<span class="post-format-sm">
+											<i class="icon-picture"></i>
+										</span>
+										<a href="blog-single.html">
+											<div class="inner">
+												<img src="images/posts/@item.Thumb " alt="post-title" />
+											</div>
+										</a>
+									</div>
+									<div class="details">
+										<ul class="meta list-inline mb-3">
+											<li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>@item.Author</a></li>
+											<li class="list-inline-item"><a href="#">@item.Cast.CastName</a></li>
+											<li class="list-inline-item">@item.CreateDate</li>
+										</ul>
+										<h5 class="post-title"><a href="@url">@item.Tite</a></h5>
+										<p class="excerpt mb-0">@item.ShortContent</p>
+										<div class="post-bottom clearfix d-flex align-items-center">
+											<div class="social-share me-auto">
+												<button class="toggle-button icon-share"></button>
+												<ul class="icons list-unstyled list-inline mb-0">
+													<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+													<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+													<li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+													<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+													<li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
+													<li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
+												</ul>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+							}
+						}
+
+						
+					</div>
+
+				</div>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+
+	
+	</div>
